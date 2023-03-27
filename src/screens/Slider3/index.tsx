@@ -16,16 +16,16 @@ export function Slider3({ setPageI }: IPage) {
                 <FlatList
                     data={slide3Texts}
                     renderItem={({ item }) =>
-                        <ComponentListMarker key={item.id} textMarker={item.text} />
+                        <ComponentListMarker key={item.id} text={item.text} />
                     }
                     keyExtractor={(item) => item.id}
                 />
             </View>
             <View style={styles.buttonSlider}>
-                <ComponentButtonSlider onPressI={() => setPageI(1)} />
-                <ComponentButtonSlider onPressI={() => setPageI(2)} />
-                <ComponentButtonSlider onPressI={() => setPageI(3)} />
-                <ComponentButtonSlider onPressI={() => setPageI(4)} />
+                <ComponentButtonSlider onPressI={() => setPageI(1)} page={false}/>
+                <ComponentButtonSlider onPressI={() => setPageI(2)} page={false}/>
+                <ComponentButtonSlider onPressI={() => setPageI(3)} page={true}/>
+                <ComponentButtonSlider onPressI={() => setPageI(4)} page={false}/>
             </View>
         </ImageBackground>
     );

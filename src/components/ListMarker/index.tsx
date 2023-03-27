@@ -3,12 +3,12 @@ import { Text, View } from "react-native";
 import { styles } from "./styles";
 
 export interface ITextMarker {
-    textMarker: string
+    text: string
 }
-export function ListMarker({ textMarker }: ITextMarker) {
+export function ListMarker({ text }: ITextMarker) {
     return (
         <View>
-            <Text style={styles.textMarker}>{textMarker}</Text>
+            <Text style={styles.text}>{text}</Text>
         </View>
     )
 }
