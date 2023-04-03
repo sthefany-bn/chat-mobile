@@ -1,40 +1,44 @@
+import { BottomSheetAndroid } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import { StyleSheet } from 'react-native';
 import { colors  } from '../../styles/colors';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     title: {
-        fontSize:50,
+        fontSize: 60,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: colors.black
+        color: colors.black,
+            marginTop: "-50%",
+        marginBottom: 15
     },
     textp: {
         fontSize: 20,
         flexDirection: "row",
         alignItems: "center",
-        margin: 30,
-        marginBottom: 2
+        margin: 12,
+        marginBottom: 4,
+        marginTop: 10
     },
     formRow: {
+        borderBottomWidth: 3,
         backgroundColor: colors.gray,
-        borderRadius: 10,
+        borderBottomColor: colors.primary,
+        borderRadius: 3,
         flexDirection: "row",
         alignItems: "center",
-        margin: 30,
-        marginTop: 2,
-    },
-    icon: {
-        fontSize: 28,
-        color: colors.primary,
-        padding: 5
+        margin: 8,
+        marginTop: 4
     },
     input:{
         fontSize: 18,
-        padding:6,
-        width: "70%"
+        padding: 5,
+        width: "85%"
+    },
+    bottom: {
+        backgroundColor: colors.primary
     }
 });

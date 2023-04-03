@@ -1,8 +1,6 @@
 import React from "react"
 import { View, KeyboardAvoidingView,Text, TextInput } from "react-native"
-import {MaterialIcons } from "@expo/vector-icons"
 import { styles } from "./styles"
-import { colors } from "../../styles/colors"
 
 export function Login() {
     return(
@@ -14,6 +12,13 @@ export function Login() {
                     <TextInput
                         keyboardType="email-address"
                         autoCapitalize="none"
+                        style={styles.input}
+                    />
+                </View>
+                <Text style={styles.textp}>Senha</Text>
+                <View style={styles.formRow}>
+                    <TextInput
+                        keyboardType="visible-password"
                         style={styles.input}
                     />
                 </View>
