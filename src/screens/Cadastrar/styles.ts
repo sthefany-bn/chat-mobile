@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: colors.black,
-    marginTop: "-30%",
+    marginTop: "-10%",
     marginBottom: 50,
   },
   textp: {
@@ -37,5 +37,8 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     padding: 5,
     width: "85%",
+  },
+  bottom: {
+    backgroundColor: colors.primary,
   },
 });

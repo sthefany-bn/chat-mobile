@@ -4,11 +4,17 @@ import { styles } from "./styles"
 import { ComponentButtonInterface } from "../../components"
 import { LoginTypes } from "../../navigations/login.navigation"
 
-export function Login({ navigation }: LoginTypes) {
+export function Cadastrar({ navigation }: LoginTypes) {
     return(
         <View style={styles.container}>
             <KeyboardAvoidingView>
-                <Text style={styles.title}>Entrar</Text>
+                <Text style={styles.title}>Cadastro</Text>
+                <Text style={styles.textp}>Nome completo</Text>
+                <View style={styles.formRow}>
+                    <TextInput
+                        style={styles.input}
+                    />
+                </View>
                 <Text style={styles.textp}>E-mail</Text>
                 <View style={styles.formRow}>
                     <TextInput
@@ -24,8 +30,8 @@ export function Login({ navigation }: LoginTypes) {
                         style={styles.input}
                     />
                 </View>
-                <ComponentButtonInterface title="Entrar" type="primary" onPressI={() => {console.log('Entrar')} }/>
-                <ComponentButtonInterface title="Cadastrar" type="primary" onPressI={() => { navigation.navigate('Cadastrar') }}/>
+                <ComponentButtonInterface title="Cadastrar" type="primary" onPressI={() => {console.log('Entrar')} }/>
+                <ComponentButtonInterface title="Voltar" type="primary" onPressI={() => { navigation.navigate('Login') }}/>
             </KeyboardAvoidingView>
         </View>
     )
