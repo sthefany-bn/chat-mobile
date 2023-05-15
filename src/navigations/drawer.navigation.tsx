@@ -1,11 +1,12 @@
 import React from 'react';
 import { DrawerNavigationProp, createDrawerNavigator } from '@react-navigation/drawer';
-import { ScreenPerfil } from '../screens'
+import { ScreenCamera, ScreenPerfil } from '../screens'
 import { colors } from '../styles/colors';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 type DrawerParamList = {
   Perfil: undefined
+  Camera: undefined
 }
 
 type DrawerScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'Perfil'>
@@ -24,7 +25,20 @@ export function DrawerNavigation() {
       drawerActiveTintColor: colors.white
     }}
     >
-      <Drawer.Screen name="Perfil" component={ScreenPerfil} />
+      <Drawer.Screen name="Perfil" component={ScreenPerfil} 
+        options={{
+          drawerIcon: () => (
+            <Ionicons name='person' size={24} color={colors.white} />
+          )
+        }}
+      />
+      <Drawer.Screen name="Camera" component={ScreenCamera} 
+        options={{
+          drawerIcon: () => (
+            <AntDesign name='camera' size={24} color={colors.white} />
+          )
+        }}
+      />
     </Drawer.Navigator>
   );
 }
