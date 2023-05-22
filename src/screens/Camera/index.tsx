@@ -2,7 +2,7 @@ import { Camera, CameraCapturedPicture, CameraType } from 'expo-camera';
 import { useState, useRef } from 'react';
 import { Button, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
 import { styles } from "./styles"
-import { MaterialCommunityIcons, FontAwesome, Ionicons, Feather } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { colors } from '../../styles/colors';
 import * as MediaLibrary from 'expo-media-library'
 import * as ImagePicker from 'expo-image-picker'
@@ -84,20 +84,22 @@ export function CameraScreen() {
             </TouchableOpacity>
             <Image source={{ uri: photo.uri }} style={styles.img} />
             <ComponentButtonInterface title='Salvar imagem' type='secondary' onPressI={savePhoto}/>
-            <ComponentButtonInterface title='Abrir imagem' type='secondary' onPressI={pickImage}/>
           </View>
         </>
       ) : (
-        <Camera style={styles.camera} type={type} ref={ref}>
-          <View style={styles.lado}>
-            <TouchableOpacity onPress={takePicture} >
-              <FontAwesome name="circle" size={60} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={toggleCameraType} >
-              <MaterialCommunityIcons name="camera-retake" size={50} color="white" />
-            </TouchableOpacity>
-          </View>
-        </Camera>
+        <View style={styles.container}> 
+          <Camera style={styles.camera} type={type} ref={ref}>
+            <View style={styles.lado}>
+              <TouchableOpacity onPress={takePicture} >
+                <FontAwesome name="circle" size={60} color="white" />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={toggleCameraType} >
+                <MaterialCommunityIcons name="camera-retake" size={50} color="white" />
+              </TouchableOpacity>
+            </View>
+          </Camera>
+          <ComponentButtonInterface title='Abrir imagem' type='secondary' onPressI={pickImage}/>
+        </View>
       )}
     </View>
   );
