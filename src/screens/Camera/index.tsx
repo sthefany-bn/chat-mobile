@@ -2,7 +2,7 @@ import { Camera, CameraCapturedPicture, CameraType } from 'expo-camera';
 import { useState, useRef } from 'react';
 import { Button, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
 import { styles } from "./styles"
-import { MaterialCommunityIcons, FontAwesome, Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome, AntDesign } from '@expo/vector-icons';
 import { colors } from '../../styles/colors';
 import * as MediaLibrary from 'expo-media-library'
 import * as ImagePicker from 'expo-image-picker'
@@ -79,8 +79,8 @@ export function CameraScreen() {
       {photo && photo.uri ? (
         <>
           <View style={styles.showphoto}>
-            <TouchableOpacity onPress={() => setPhoto(undefined)}>
-              <Ionicons name="caret-back-circle" size={40} color={colors.secondary} />
+            <TouchableOpacity onPress={() => setPhoto(undefined)} style={styles.voltar}>
+              <AntDesign name="arrowleft" size={30} color="black" />
             </TouchableOpacity>
             <Image source={{ uri: photo.uri }} style={styles.img} />
             <ComponentButtonInterface title='Salvar imagem' type='secondary' onPressI={savePhoto}/>
@@ -89,7 +89,7 @@ export function CameraScreen() {
       ) : (
         <View style={styles.container}> 
           <Camera style={styles.camera} type={type} ref={ref}>
-            <View style={styles.lado}>
+            <View style={styles.icons}>
               <TouchableOpacity onPress={takePicture} >
                 <FontAwesome name="circle" size={60} color="white" />
               </TouchableOpacity>

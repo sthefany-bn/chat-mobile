@@ -11,6 +11,8 @@ export const styles = StyleSheet.create({
       justifyContent: 'flex-end',
       height: Dimensions.get('window').width,
       width: Dimensions.get('window').width,      
+      marginTop: 40,
+      marginBottom: 40
     },
     showphoto: {
       flex: 1,
@@ -18,11 +20,17 @@ export const styles = StyleSheet.create({
     },
     img: {
       height: Dimensions.get('window').width,
-      width: Dimensions.get('window').width
+      width: Dimensions.get('window').width,
+      marginTop: 5,
+      marginBottom: 5
     },
-    lado: {
+    icons: {
       flexDirection: "row",
       marginBottom: "10%",
       justifyContent: "space-around"
+    },
+    voltar: {
+      marginTop: 8,
+      marginBottom: 5
     }
   });
