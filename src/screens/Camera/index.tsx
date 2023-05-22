@@ -1,8 +1,10 @@
 import { Camera, CameraType } from 'expo-camera';
-import { useRef, useState } from 'react';
-import { Button, StyleSheet, Text, Image, View } from 'react-native';
-import { ComponentButtonInterface } from '../../components';
+import { useState, useRef } from 'react';
+import { Button, Text, TouchableOpacity, View, Image } from 'react-native';
 import { styles } from "./styles"
+import { MaterialCommunityIcons, FontAwesome, Ionicons, Feather } from '@expo/vector-icons';
+import { colors } from '../../styles/colors';
+
 interface IPhoto {
   height: string
   uri: string
@@ -34,7 +36,7 @@ export function CameraScreen() {
     setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
   }
 
-  async function takePicture(){
+  async function takePicture() {
     if (ref.current) {
       const picture = await ref.current.takePictureAsync()
       setPhoto(picture)
@@ -43,11 +45,26 @@ export function CameraScreen() {
 
   return (
     <View style={styles.container}>
-      <ComponentButtonInterface title='Flip' type='secondary' onPressI={toggleCameraType}/>
-      <Camera style={styles.camera} type={type} ref={ref} ratio="1:1" />
-      <ComponentButtonInterface title='Foto' type='secondary' onPressI={takePicture}/>
-      {photo && photo.uri && (
-        <Image source={{ uri: photo.uri}} style={styles.img}/>
+      {photo && photo.uri ? (
+        <>
+          <View style={styles.showphoto}>
+            <TouchableOpacity onPress={() => setPhoto(undefined)}>
+              <Ionicons name="caret-back-circle" size={40} color={colors.secondary} />
+            </TouchableOpacity>
+            <Image source={{ uri: photo.uri }} style={styles.img} />
+          </View>
+        </>
+      ) : (
+        <Camera style={styles.camera} type={type} ref={ref}>
+          <View style={styles.lado}>
+            <TouchableOpacity onPress={takePicture} >
+              <FontAwesome name="circle" size={60} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={toggleCameraType} >
+              <MaterialCommunityIcons name="camera-retake" size={50} color="white" />
+            </TouchableOpacity>
+          </View>
+        </Camera>
       )}
     </View>
   );
