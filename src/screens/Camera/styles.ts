@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
       height: Dimensions.get('window').width,
       width: Dimensions.get('window').width,      
       marginTop: 40,
-      marginBottom: 40
+      marginBottom: 20
     },
     showphoto: {
       flex: 1,
@@ -32,5 +32,5 @@ export const styles = StyleSheet.create({
     voltar: {
       marginTop: 8,
       marginBottom: 5
-    }
+    },
   });
