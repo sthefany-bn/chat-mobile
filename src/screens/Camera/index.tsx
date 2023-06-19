@@ -50,7 +50,7 @@ export function CameraScreen() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>We need your permission to open QrCode</Text>
-        <Button onPress={requestPermissionMedia} title="grant permission" />
+        <Button onPress={requestPermissionQrCode} title="grant permission" />
       </View>
     );
   }
