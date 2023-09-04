@@ -27,23 +27,23 @@ export function Cadastrar({ navigation }: LoginTypes) {
             setIsLoading(true)
             if (data?.name && data.email && data.password) {
                 const response = await apiUser.register(data)
-                Alert.alert(`${response.data.name} cadastrsdo!`)
+                Alert.alert(`${response.data.name} cadastrado!`)
                 navigation.navigate('Login')
             } else {
                 Alert.alert("Prencha todos os campos!")
             }
-        } catch (error) { 
+        } catch (error) {
             const err = error as AxiosError
             const errorData = err.response?.data as IErrorApi
             let message = ""
-            if(errorData) {
+            if (errorData) {
                 for (const iterator of errorData.errors) {
                     message = `${message} ${iterator.message} \n`
                 }
             }
             Alert.alert(message)
         } finally {
-            setIsLoading
+            setIsLoading(false)
         }
     }
 
@@ -84,18 +84,8 @@ export function Cadastrar({ navigation }: LoginTypes) {
                                 onChangeText={(i) => handleChange({ password: i })}
                             />
                         </View>
-                        <ComponentButtonInterface
-                            title="Cadastrar"
-                            type="primary"
-                            onPressI={handleRegister}
-                        />
-                        <ComponentButtonInterface
-                            title="Voltar"
-                            type="primary"
-                            onPressI={() => {
-                                navigation.navigate("Login");
-                            }}
-                        />
+                        <ComponentButtonInterface title="Cadastrar" type="primary" onPressI={handleRegister}/>
+                        <ComponentButtonInterface title="Voltar" type="primary" onPressI={() => { navigation.navigate("Login") }}/>
                     </KeyboardAvoidingView>
                 </View>
             )}
