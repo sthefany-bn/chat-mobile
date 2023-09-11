@@ -20,8 +20,10 @@ export default function App() {
     case 4:
       return <ScreenSlider4 setPageI={setPage} />
     default:
-      <AuthProvider>
-        <Navigation />
-      </AuthProvider>
+      return(
+        <AuthProvider>
+          <Navigation/>
+        </AuthProvider>
+      )
   }
 }
