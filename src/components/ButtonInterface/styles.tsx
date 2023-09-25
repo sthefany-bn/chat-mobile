@@ -22,6 +22,11 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 5,
   },
+  buttonAlert: {
+    backgroundColor: colors.alert,
+    borderRadius: 5,
+    margin: 5,
+  },
   text: {
     color: colors.white,
     padding:10, 
