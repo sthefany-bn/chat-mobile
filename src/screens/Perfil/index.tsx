@@ -1,15 +1,27 @@
-import React, {useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Alert } from "react-native";
 import { styles } from "./styles";
+import { registerForPushNotificationsAsync } from "../../services/data/Push"
 import { ComponentButtonInterface } from "../../components";
 import { TabTypes } from "../../navigations/tab.navigation";
 import { useAuth } from "../../hooks/auth";
-import { IAuthenticate } from "../../services/data/User";
 import { AxiosError } from "axios"
+import * as Notifications from "expo-notifications"
+import { ComponentLoading } from "../../components"
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+
+    }),
+});
 
 export function Perfil({ navigation }: TabTypes) {
+    const { user } = useAuth();
     const { signOut } = useAuth();
-    const[isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     async function handleSignOut() {
         try {
             setIsLoading(true);
@@ -21,11 +33,29 @@ export function Perfil({ navigation }: TabTypes) {
             setIsLoading(false);
         }
     }
+    useEffect(() => {
+        if (user) {
+            setIsLoading(false);
+        }
+    }, [user]);
+    useEffect(() => {
+        async function fetchToken() {
+            const token = await registerForPushNotificationsAsync()
+            console.log(token)
+        }
+        fetchToken()
+    }, []);
 
     return (
-        <View style={styles.container}>
-            <Text>Perfil</Text>
-            <ComponentButtonInterface title="Log out" type="alert" onPressI={handleSignOut}/>
-        </View>
+        <>
+            {isLoading ? (
+                <ComponentLoading />
+            ) : (
+                <View style={styles.container}>
+                    <Text>Perfil</Text>
+                    <ComponentButtonInterface title="Log out" type="alert" onPressI={handleSignOut} />
+                </View>
+            )}
+        </>
     )
 }
