@@ -26,7 +26,7 @@ const AuthProvider = ({ children }: IProvider) => {
             password,
         });
         const user = response.data;
-        api.defaults.headers.common.Authorization = `Baerer ${user.token.token}`;
+        api.defaults.headers.common.Authorization = `Bearer ${user.token.token}`;
         setAuth({ ...user });
         await AsyncStorage.setItem("user", JSON.stringify(user))
     }, [])
@@ -46,7 +46,7 @@ const AuthProvider = ({ children }: IProvider) => {
         if (user) {
             const userParse = JSON.parse(user) as IUserLogin
             if (isAfter(parseISO(userParse.token.expires_at), new Date())) {
-                api.defaults.headers.common.Authorization = `Baerer ${userParse.token.token}`;
+                api.defaults.headers.common.Authorization = `Bearer ${userParse.token.token}`;
                 setAuth(userParse)
             } else {
                 await removeLocalStorage()

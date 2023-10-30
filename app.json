@@ -37,7 +37,8 @@
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.FOREGROUND_SERVICE"
-      ]
+      ],
+      "package": "com.sthefanybn.chatmobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -68,6 +69,9 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
+      ],
+      [
+        "expo-notifications"
       ]
     ],
     "extra": {
