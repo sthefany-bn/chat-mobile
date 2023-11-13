@@ -39,7 +39,8 @@
     "expo-notifications": "~0.18.1",
     "expo-device": "~5.2.1",
     "expo-constants": "~14.2.1",
-    "expo-updates": "~0.16.4"
+    "expo-updates": "~0.16.4",
+    "expo-sensors": "~12.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
